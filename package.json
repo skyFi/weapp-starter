@@ -5,6 +5,10 @@
   "main": "index.js",
   "repository": "https://github.com/skyFi/weapp-starter.git",
   "author": "skylor",
+  "scripts": {
+    "build": "./node_modules/gulp/bin/gulp.js build",
+    "dev": "./node_modules/gulp/bin/gulp.js dev"
+  },
   "dependencies": {
     "ali-oss": "^4.11.4",
     "babel-core": "^6.26.0",
