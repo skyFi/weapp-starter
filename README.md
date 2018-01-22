@@ -86,7 +86,12 @@ yarn add babel-preset-env
 ```
 
 4. 在 `Gulp` 中使用 `babel`
+
 ```javascript
+// install
+yarn add gulp-babel
+
+const babel = require('gulp-babel');
 // ...
 .pipe(babel())
 // ...
