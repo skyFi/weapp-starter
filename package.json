@@ -6,13 +6,13 @@
   "repository": "https://github.com/skyFi/weapp-starter.git",
   "author": "skylor",
   "scripts": {
+    "clean": "./node_modules/gulp/bin/gulp.js clean",
     "build": "./node_modules/gulp/bin/gulp.js build",
     "dev": "./node_modules/gulp/bin/gulp.js dev"
   },
   "dependencies": {
     "ali-oss": "^4.11.4",
     "babel-core": "^6.26.0",
-    "babel-plugin-syntax-async-functions": "^6.13.0",
     "babel-preset-env": "^1.6.1",
     "chalk": "^2.3.0",
     "config": "^1.29.2",

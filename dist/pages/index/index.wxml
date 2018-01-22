@@ -1,7 +1,4 @@
 <scroll-view scroll-y="{{true}}" scroll-with-animation="{{true}}" enable-back-to-top="{{true}}" scroll-top="{{scrollTop}}" class="container-index">
-  <block wx:for="{{cards}}" wx:key="{{card}}" wx:for-item="card">
-    <component-country-select class="card-item" wx:if="{{card.type === 'country-select'}}" data="{{counties}}"/>
-    <component-category-select class="card-item" wx:elif="{{card.type === 'category-select'}}" data="{{card.data}}"/>
-    <component-rank-list class="card-item" wx:else data="{{card.data}}" />
-  </block>
+  <view class="h1">weapp-starter</view>
+  <view class="h4">微信小程序开发最佳实践</view>
 </scroll-view>

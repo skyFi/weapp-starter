@@ -4,63 +4,6 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-view,
-scroll-view,
-label,
-picker {
-  box-sizing: border-box;
-}
-.clearfix:before,
-.clearfix:after {
-  display: table;
-  content: "";
-  clear: both;
-}
-.pull-left {
-  float: left;
-}
-.pull-right {
-  float: right;
-}
-.hidden {
-  display: none;
-}
-.card {
-  margin-bottom: 24rpx;
-  padding: 56rpx 32rpx;
-  background-color: #FFFFFF;
-  border-radius: 24rpx;
-}
-.card .desc {
-  font-size: 1rem;
-  line-height: 1.5;
-  color: #26343F;
-}
-.radio-group .radio {
-  margin-bottom: 16rpx;
-  width: 100%;
-  height: 92rpx;
-  line-height: 92rpx;
-  border-radius: 8rpx;
-  text-align: center;
-  color: #58646E;
-  background-color: #E9F0F7;
-  display: block;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-}
-.radio-group .radio.checked {
-  color: #FFFFFF;
-  background: #0075FF url('https://bkd-media.smartstudy.com/assets/weapp-rank/radio-checked.png') no-repeat top right / 40rpx 40rpx;
-}
-.radio-group .radio:last-child {
-  margin-bottom: 0;
-}
-page {
-  background-image: url('https://bkd-media.smartstudy.com/assets/weapp-rank/index-bg.png');
-  background-attachment: fixed;
-}
 .container-index {
   height: 100vh;
   padding: 24rpx 16rpx 40rpx;

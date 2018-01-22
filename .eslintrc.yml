@@ -1,0 +1,130 @@
+env:
+  es6: true
+  node: true
+  mocha: true
+extends: 'eslint:recommended'
+globals: 
+  App: true
+  Page: true
+  Component: true
+  wx: true
+  getApp: true
+parserOptions:
+  ecmaVersion: 8
+  sourceType: module
+rules:
+  no-console: error
+  indent:
+    - warn
+    - 2
+    - SwitchCase: 1
+      VariableDeclarator:
+        var: 2
+        let: 2
+        const: 3
+  linebreak-style:
+    - error
+    - unix
+  quotes:
+    - warn
+    - single
+  semi:
+    - error
+    - always
+  comma-dangle:
+    - warn
+    - only-multiline
+  no-dupe-keys: error
+  no-dupe-args: error
+  use-isnan: error
+  valid-typeof: error
+  curly: error
+  default-case: error
+  eqeqeq:
+    - error
+    - allow-null
+  guard-for-in: warn
+  no-else-return: warn
+  no-fallthrough: error
+  no-floating-decimal: warn
+  no-multi-str: error
+  no-octal: error
+  no-octal-escape: error
+  no-redeclare: error
+  no-with: error
+  no-void: error
+  radix: error
+  strict: error
+  no-delete-var: error
+  array-bracket-spacing:
+    - error
+    - never
+  block-spacing: error
+  brace-style:
+    - error
+    - 1tbs
+    - allowSingleLine: true
+  comma-spacing: error
+  comma-style:
+    - error
+    - last
+  computed-property-spacing: error
+  camelcase: warn
+  key-spacing:
+    - error
+    - beforeColon: false
+      afterColon: true
+  keyword-spacing: error
+  max-params:
+    - warn
+    - 6
+  new-cap:
+    - error
+    - newIsCap: true
+      capIsNew: false
+      properties: true
+  no-array-constructor: error
+  no-spaced-func: error
+  no-whitespace-before-property: error
+  no-trailing-spaces:
+    - error
+    - skipBlankLines: true
+  operator-linebreak: off
+  space-before-blocks:
+    - error
+    - always
+  space-before-function-paren:
+    - error
+    - never
+  space-in-parens:
+    - error
+    - never
+  space-infix-ops: error
+  space-unary-ops: error
+  spaced-comment:
+    - warn
+    - always
+  semi-spacing: error
+  constructor-super: error
+  generator-star-spacing: warn
+  yield-star-spacing: warn
+  no-const-assign: error
+  no-dupe-class-members: error
+  no-this-before-super: error
+  no-var: error
+  no-unused-vars:
+    - error
+    - vars: local
+      args: none
+  prefer-arrow-callback: warn
+  prefer-const: off
+  prefer-rest-params: warn
+  prefer-spread: warn
+  prefer-template: warn
+  template-curly-spacing:
+    - warn
+    - never
+  valid-jsdoc: off
+  no-global-assign: error
+  no-unsafe-negation: error
+  require-yield: off

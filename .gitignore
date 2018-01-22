@@ -57,3 +57,21 @@ typings/
 # dotenv environment variables file
 .env
 
+*~
+.DS_Store
+.idea/
+public/
+tmp/
+config/
+local.*.js
+tmp/**
+*.iml
+*-manifest.json
+version.json
+config.json
+dist/
+.vscode/
+public/
+config.less
+config.js
+

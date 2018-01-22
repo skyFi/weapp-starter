@@ -1,10 +1,39 @@
-view, scroll-view, label, picker {
+view, 
+scroll-view,
+label, 
+picker, 
+text, 
+form, 
+button, 
+input,
+swiper,
+movable-view,
+cover-view,
+icon,
+rich-text,
+progress,
+checkbox,
+picker-view,
+radio,
+slider,
+switch,
+textarea,
+navigator,
+audio,
+image,
+video,
+camera,
+live-player,
+live-pusher,
+map,
+canvas,
+web-view
+{
   box-sizing: border-box;
 }
 
 // 清除浮动
 .clearfix {
-
   &:before, &:after {
     display: table;
     content: "";
@@ -25,42 +54,19 @@ view, scroll-view, label, picker {
   display: none;
 }
 
-// 卡片
-.card {
-  margin-bottom: 24rpx;
-  padding: 56rpx 32rpx;
-  background-color: @white;
-  border-radius: 24rpx;
+.h1 {
+  margin: 20rpx 0;
+  font-size: 18px;
+  font-weight: bolder;
+  text-align: center;
+  .oneline;
 }
 
-.card .desc {
-  font-size: 1rem;
-  line-height: 1.5;
-  color: @gray2;
-}
+.h4 {
+  margin: 20rpx 0;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: right;
 
-// radio
-.radio-group {
-
-  .radio {
-    display:block;
-    margin-bottom: 16rpx;
-    width: 100%;
-    height: 92rpx;
-    line-height: 92rpx;
-    border-radius: 8rpx;
-    text-align: center;
-    color: @gray5;
-    background-color: @grayE1;
-    .oneline;
-
-    &.checked {
-      color: @white;
-      background: @main url('@{cdn}/radio-checked.png') no-repeat top right/40rpx 40rpx;
-    }
-
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
+  .oneline;
 }
