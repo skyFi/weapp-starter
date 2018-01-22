@@ -1,0 +1,104 @@
+.container {
+  padding: 320rpx 16rpx 24rpx;
+  background: @main url('https://bkd-media.smartstudy.com/assets/weapp-rank/admission-rate.png') no-repeat top center/100%;
+}
+
+.form {
+  display: block;
+  padding: 0 24rpx;
+  background-color: @white;
+  border-radius: 24rpx;
+
+  .picker {
+    border-bottom: 1px solid @grayE2;
+
+    &:last-child {
+      border-bottom: 0;
+    }
+
+    .item {
+      border-bottom: 0;
+    }
+  }
+
+  .item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 132rpx;
+    padding-right: 6px;
+    border-bottom: 1px solid @grayE2;
+
+    &:last-child {
+      border-bottom: 0;
+    }
+
+    .text {
+      flex: none;
+      width: 258rpx;
+      color: @gray9;
+    }
+
+    .value {
+      flex: 1;
+      width: 0;
+      color: @gray2;
+    }
+
+    .arrow {
+      flex: none;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      width: 30rpx;
+
+      &:after {
+        display: block;
+        content: "";
+        width: 24rpx;
+        height: 24rpx;
+        border-right: 8rpx solid @grayD;
+        border-bottom: 8rpx solid @grayD;
+        transform: rotate(-45deg);
+      }
+    }
+  }
+}
+
+.desc {
+  margin-top: 24rpx;
+  color: rgba(255, 255, 255, .8);
+  text-align: center;
+  font-size: .8125rem;
+  line-height: 26rpx;
+}
+
+.btn-submit {
+  margin-top: 48rpx;
+  height: 96rpx;
+  border-radius: 48rpx;
+  text-align: center;
+  color: @white;
+  line-height: 96rpx;
+  font-size: 1.0625rem;
+  background-color: @orange;
+}
+
+.footer {
+  margin-top: 24rpx;
+  display: flex;
+  opacity: .5;
+  color: @white;
+  justify-content: space-between;
+  align-items: center;
+  font-size: .75rem;
+  line-height: 24rpx;
+
+  &:before, &:after {
+    display: block;
+    content: "";
+    border-top: 1rpx solid @white;
+    width: 160rpx;
+  }
+}
+

@@ -1,0 +1,29 @@
+{
+  "name": "weapp-starter",
+  "version": "1.0.0",
+  "description": "微信小程序开发最佳实践",
+  "main": "index.js",
+  "repository": "https://github.com/skyFi/weapp-starter.git",
+  "author": "skylor",
+  "dependencies": {
+    "ali-oss": "^4.11.4",
+    "babel-core": "^6.26.0",
+    "babel-plugin-syntax-async-functions": "^6.13.0",
+    "babel-preset-env": "^1.6.1",
+    "chalk": "^2.3.0",
+    "config": "^1.29.2",
+    "del": "^3.0.0",
+    "gulp": "^4.0.0",
+    "gulp-babel": "^7.0.0",
+    "gulp-changed": "^3.2.0",
+    "gulp-file": "^0.4.0",
+    "gulp-less": "^3.4.0",
+    "gulp-rename": "^1.2.2",
+    "js-yaml": "^3.10.0",
+    "lodash": "^4.17.4",
+    "moment": "^2.20.1",
+    "progress": "^2.0.0",
+    "regenerator": "^0.12.3",
+    "through-gulp": "^0.5.0"
+  }
+}

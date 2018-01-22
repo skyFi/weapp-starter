@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "首页",
+  "usingComponents": {
+    "component-country-select": "../../components/country-select/country-select",
+    "component-category-select": "../../components/category-select/category-select",
+    "component-rank-list": "../../components/rank-list/rank-list"
+  }
+}

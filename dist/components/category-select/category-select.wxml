@@ -1,0 +1,10 @@
+<view class="card">
+  <view class="text">“{{name}}”有这些排名，你想看哪个？</view>
+  <view>
+    <radio-group class="radio-group clearfix" bindchange="onChange">
+      <label class="radio {{item.checked?'checked':''}}" wx:for="{{rankings}}" wx:key="ranking">
+        <radio value="{{item.value}}" class="hidden" checked="{{item.checked}}"/>{{item.name}}
+      </label>
+    </radio-group>
+  </view>
+</view>

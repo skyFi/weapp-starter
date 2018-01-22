@@ -1,0 +1,8 @@
+assetsPath: /assets
+cdnUpload: https://bkd-media.smartstudy.com
+oss:
+  key: 'qFUwBXVVX4MtSXbA'
+  keyPrefix: '/assets/weapp-rank'
+  secret: 'R6UJvNp1rRNzHwRVK30orosfT7DDmz'
+  endpoint: 'http://oss-cn-beijing.aliyuncs.com/'
+  bucket: 'bkd-static'

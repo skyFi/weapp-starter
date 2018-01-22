@@ -1,0 +1,38 @@
+<wxs module="tool">
+  var transRank = function(rank) {
+    return rank ? ('#' + rank) : 'NaN';
+  }
+  module.exports.transRank = transRank;
+</wxs>
+
+<view class="container">
+  <view class="card">诺，这是你想查看的排名！共计：{{count}}所学校</view>
+  <view class="card school-card">
+    <view class="school-list">
+      <view class="school" wx:for="{{ranks}}" wx:key="school" wx:for-item="school">
+        <view class="box">
+          <navigator class="left" url="/pages/school/school?id={{school.id}}">
+            <view class="logo"><image class="image" src="{{school.logo}}" /></view>
+            <view class="rank">{{tool.transRank(school.rank)}}</view>
+          </navigator>
+          <navigator class="center" url="/pages/school/school?id={{school.id}}">
+            <view class="top">
+              <view class="zh-name">{{school.chineseName}}</view>
+              <view class="en-name">{{school.englishName}}</view>
+              <view class="location">{{school.location}}</view>
+            </view>
+            <view class="rate">平均录取率：{{school.averageAdmissionRate || 'NaN'}}</view>
+          </navigator>
+          <view class="right">
+            <navigator url="/pages/admission-rate/admission-rate?id={{school.id}}&schoolName={{schoool.chineseName}}" class="button" hover-class="hover">我的录取率</navigator>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="more {{last?'no-more':''}}" bindtap="onShowMore">{{last?'我是有底线的~':'查看更多学校'}}</view>
+  </view>
+  <view class="btn-group">
+    <view class="btn" bindtap="onAddCardCountry">切换国家</view>
+    <view class="btn" bindtap="onAddCardCategory">切换排名</view>
+  </view>
+</view>

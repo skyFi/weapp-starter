@@ -1,0 +1,13 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/school/school",
+    "pages/admission-rate/admission-rate"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#0075ff",
+    "navigationBarTitleText": "全球大学排行榜",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#0075FF"
+  }
+}

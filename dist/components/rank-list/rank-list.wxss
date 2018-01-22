@@ -1,0 +1,186 @@
+.oneline {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+view,
+scroll-view,
+label,
+picker {
+  box-sizing: border-box;
+}
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: "";
+  clear: both;
+}
+.pull-left {
+  float: left;
+}
+.pull-right {
+  float: right;
+}
+.hidden {
+  display: none;
+}
+.card {
+  margin-bottom: 24rpx;
+  padding: 56rpx 32rpx;
+  background-color: #FFFFFF;
+  border-radius: 24rpx;
+}
+.card .desc {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #26343F;
+}
+.radio-group .radio {
+  margin-bottom: 16rpx;
+  width: 100%;
+  height: 92rpx;
+  line-height: 92rpx;
+  border-radius: 8rpx;
+  text-align: center;
+  color: #58646E;
+  background-color: #E9F0F7;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.radio-group .radio.checked {
+  color: #FFFFFF;
+  background: #0075FF url('https://bkd-media.smartstudy.com/assets/weapp-rank/radio-checked.png') no-repeat top right / 40rpx 40rpx;
+}
+.radio-group .radio:last-child {
+  margin-bottom: 0;
+}
+.school-card {
+  padding: 0;
+  margin-bottom: 0;
+}
+.container {
+  overflow: hidden;
+}
+.school-list .school {
+  border-bottom: 1rpx solid #E9F0F7;
+  padding: 32rpx 24rpx 28rpx;
+}
+.school-list .school .box {
+  display: flex;
+  flex-direction: row;
+}
+.school-list .school .box .left {
+  flex: none;
+  width: 100rpx;
+}
+.school-list .school .box .left .logo {
+  padding: 14rpx;
+  width: 100rpx;
+  height: 100rpx;
+  border: 8rpx solid #E9ECEE;
+  border-radius: 50%;
+}
+.school-list .school .box .left .logo .image {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+.school-list .school .box .left .rank {
+  margin-top: 24rpx;
+  text-align: center;
+  font-size: .875rem;
+  line-height: 1;
+  color: #0075FF;
+  font-weight: 600;
+}
+.school-list .school .box .center {
+  padding: 4rpx 16rpx;
+  flex: 1;
+  width: 0;
+}
+.school-list .school .box .center .top {
+  min-height: 100rpx;
+}
+.school-list .school .box .center .top .zh-name {
+  margin-bottom: 2rpx;
+  font-size: 1rem;
+  line-height: 1;
+  color: #26343F;
+  font-weight: 600;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.school-list .school .box .center .top .en-name {
+  margin-bottom: 6rpx;
+  font-size: .8125rem;
+  line-height: 36rpx;
+  color: #949BA1;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.school-list .school .box .center .top .location {
+  margin-bottom: 20rpx;
+  font-size: .75rem;
+  line-height: 1;
+  color: #949BA1;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.school-list .school .box .center .rate {
+  font-size: .75rem;
+  line-height: 1;
+  color: #26343F;
+}
+.school-list .school .box .right {
+  display: flex;
+  align-items: center;
+  flex: none;
+  width: 192rpx;
+}
+.school-list .school .box .right .button {
+  width: 100%;
+  height: 64rpx;
+  font-size: .875rem;
+  line-height: 64rpx;
+  text-align: center;
+  color: #FFFFFF;
+  background-color: #FFBA0D;
+  border-radius: 32rpx;
+}
+.more {
+  padding: 40rpx 0;
+  text-align: center;
+  font-size: .875rem;
+  line-height: 1;
+  color: #0075FF;
+}
+.more.no-more {
+  color: #949BA1;
+}
+.btn-group {
+  margin: 40rpx auto;
+  width: 470rpx;
+}
+.btn-group .btn {
+  display: inline-block;
+  width: 178rpx;
+  height: 64rpx;
+  font-size: .875rem;
+  line-height: 64rpx;
+  text-align: center;
+  color: #FFFFFF;
+  border: 1rpx solid #FFFFFF;
+  border-radius: 32rpx;
+}
+.btn-group .btn:first-child {
+  margin-right: 114rpx;
+}

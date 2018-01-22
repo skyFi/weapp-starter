@@ -1,0 +1,8 @@
+assetsPath: /assets
+cdnUpload: https://bkd-media.smartstudy.com
+oss:
+  key: ''
+  keyPrefix: ''
+  secret: ''
+  endpoint: ''
+  bucket: ''
