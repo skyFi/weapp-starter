@@ -74,4 +74,5 @@ dist/
 public/
 config.less
 config.js
+local.yml
 

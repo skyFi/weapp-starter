@@ -1,23 +1,17 @@
 // 获取国家的榜单和目录
-exports.getCountryCategories = async () => {
-  const res = await wx.request({
-    url: '/rank/categories/index',
-  });
-  let counties = [];
-  if (res) {
-    const integratedRankings = res.data.integratedRankings;
-    if (integratedRankings.length && integratedRankings.length > 0) {
-      // 处理数据
-      counties = integratedRankings.slice(0, 5).map(item => ({
-        id: item.groupId,
-        name: item.groupName && item.groupName.replace('排名', '') || '',
-        rankings: item.rankings && item.rankings.length > 0
-          && item.rankings.map(ranking => ({
-            id: ranking.id,
-            name: `${ranking.year || ''}${ranking.type || ''}${ranking.title || ''}`
-          })) || []
-      }));
-    }
-  }
-  return counties;
+exports.fetchList = async () => {
+  const res = await new Promise((resolve) => {
+    setTimeout(() => {
+      resolve([
+        '优化小程序 `API`',
+        '使用 async/await',
+        '接入 `Redux` 管理页面数据流',
+        '样式书写采用 `less` 预编译',
+        '`wxs` 管理工具库',
+        '按需加载，子页面分包（除却 `tab` 页面的其他页面）',
+        '资源自动化管理'
+      ]);
+    }, 1000);
+  })
+  return res;
 };
