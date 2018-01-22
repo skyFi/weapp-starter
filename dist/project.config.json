@@ -9,8 +9,8 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "1.9.1",
-	"appid": "touristappid",
-	"projectname": "weapp-starter",
+	"appid": "wx45a4f04031175fde",
+	"projectname": "weapp-rank",
 	"isGameTourist": false,
 	"condition": {
 		"search": {

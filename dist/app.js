@@ -4,19 +4,26 @@ var _wx = require('./utils/wx.js');
 
 var _wx2 = _interopRequireDefault(_wx);
 
-var _index = require('./service/index');
+var _index = require('./actions/index');
 
 var _index2 = _interopRequireDefault(_index);
 
-var _EventListener = require('./utils/EventListener');
+var _redux = require('./utils/lib/redux');
 
-var _EventListener2 = _interopRequireDefault(_EventListener);
+var _wxRedux = require('./utils/wxRedux');
+
+var _reducer = require('./reducer');
+
+var _reducer2 = _interopRequireDefault(_reducer);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
-App({
+var initState = {}; // 初始化的 states
+var store = (0, _redux.createStore)(_reducer2.default, initState);
+
+App((0, _wxRedux.Provider)(store)({
   onLaunch: function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/_wx.regeneratorRuntime.mark(function _callee() {
       var loginResult, res;
@@ -37,9 +44,7 @@ App({
             case 5:
               res = _context.sent;
 
-              console.log(res);
-
-            case 7:
+            case 6:
             case 'end':
               return _context.stop();
           }
@@ -54,8 +59,6 @@ App({
     return onLaunch;
   }(),
 
-  // 服务
-  service: _index2.default,
-  // 事件广播
-  EventListener: _EventListener2.default
-});
+  // 挂载所有的 Actions
+  Action: _index2.default
+}));
