@@ -6,3 +6,13 @@ oss:
   secret: ''
   endpoint: ''
   bucket: ''
+
+# # 例子：
+# assetsPath: /assets
+# cdnUpload: https://xxx.example.com
+# oss:
+#   key: 'asfq2efasdfasf'
+#   keyPrefix: '/assets/weapp-xxx'
+#   secret: '1k3kadsfajsdpfahpb0p3hefnapjshdfas'
+#   endpoint: 'http://oss-cn-beijing.aliyuncs.com/'
+#   bucket: 'xxx-static'
