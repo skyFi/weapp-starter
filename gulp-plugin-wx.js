@@ -20,6 +20,7 @@ function iconGeneration({ wxPath }) {
       && !/(utils)$/.test(dir)
       && !/(common)$/.test(dir)
       && !/(sagas)$/.test(dir)
+      && !/(wxs)$/.test(dir)
     ) {
       if (!/^\..*/.test(wxRelativePath)) {
         wxRelativePath = `./${wxRelativePath}`;

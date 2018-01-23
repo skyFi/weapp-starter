@@ -1,7 +1,9 @@
+<wxs module="moment" src="../../wxs/moment.wxs"></wxs>
+
 <scroll-view scroll-y="{{true}}" scroll-with-animation="{{true}}" enable-back-to-top="{{true}}" scroll-top="{{scrollTop}}" class="container-index">
   <view class="h1">weapp-starter</view>
   <view class="h4">{{name}}</view>
-  <navigator class="home" url="../home/home">主页</navigator>
+  <navigator class="home" url="../home/home">主页 - {{moment('YYYY年MM月DD日 HH:mm:ss')}}</navigator>
   <view class="">
     <block wx:for="{{favorites}}" wx:for-index="index" wx:key="index" wx:for-item="item">
       <view class="item">{{index + 1}}. {{item}}</view>

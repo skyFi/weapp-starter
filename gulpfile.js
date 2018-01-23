@@ -45,7 +45,7 @@ function watchTaskFunc(done) {
 
 function watch(type, filePath) {
   changeLog({ type, filePath });
-  const r = /(wxml|json)$/;
+  const r = /(wxml|json|wxs)$/;
   const cssR = /(less)$/;
   const jsR = /(js)$/;
   const { dir, ext, name } = path.parse(filePath);
@@ -53,7 +53,7 @@ function watch(type, filePath) {
 
   // 删除
   if (type === 'unlink' || type === 'unlinkDir') {
-    // 删除 js, json, wxml 文件
+    // 删除 js, json, wxml, wxs 文件
     if (r.test(ext)) {
       del(filePath.replace('src', 'dist'));
       return;
@@ -124,12 +124,13 @@ function watch(type, filePath) {
   
 }
 
-// 拷贝 微信 json, wxml 文件
+// 拷贝 微信 json, wxml, wxs 文件
 function copyWxFile(done) {
   gulp.src([
     'src/*.json',
     'src/**/*/*.json',
     'src/**/*/*.wxml',
+    'src/**/*/*.wxs',
   ])
     .pipe(changed('./dist'))
     .pipe(gulp.dest('./dist'))
