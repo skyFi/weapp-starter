@@ -101,3 +101,5 @@ promisifiedWxApi.uploadFile = _request.uploadFile;
 
 export default promisifiedWxApi;
 export const regeneratorRuntime = runtime; 
+export const connect = require('./wxRedux').connect; 
+export const Provider = require('./wxRedux').Provider; 

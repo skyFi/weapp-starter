@@ -7,8 +7,8 @@
   "author": "skylor",
   "scripts": {
     "clean": "./node_modules/gulp/bin/gulp.js clean",
-    "build": "./node_modules/gulp/bin/gulp.js build",
-    "dev": "./node_modules/gulp/bin/gulp.js dev"
+    "build": "npm run clean && ./node_modules/gulp/bin/gulp.js build",
+    "dev": "npm run clean && ./node_modules/gulp/bin/gulp.js dev"
   },
   "dependencies": {
     "ali-oss": "^4.11.4",

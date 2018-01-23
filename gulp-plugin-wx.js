@@ -13,15 +13,22 @@ function iconGeneration({ wxPath }) {
       // html = `${`const app = getApp();` + '\n'}${html}`;
       html = html.replace('/* global app */', 'const app = getApp();');
     }
+    // 不需要添加 wx 的文件
+    // todo: 正向判断
     if (filepath !== wxPath
       && !/(utils\/lib)$/.test(dir)
       && !/(utils)$/.test(dir)
       && !/(common)$/.test(dir)
+      && !/(sagas)$/.test(dir)
     ) {
       if (!/^\..*/.test(wxRelativePath)) {
         wxRelativePath = `./${wxRelativePath}`;
       }
-      html = `${`import wx, { regeneratorRuntime } from '${wxRelativePath}';` + '\n'}${html}`;
+      html = `${`import wx, { regeneratorRuntime, Provider, connect } from '${wxRelativePath}';` + '\n'}${html}`;
+    }
+    // sagas 的 generator function 转义
+    if (/(sagas)$/.test(dir)) {
+      html = `${`import { regeneratorRuntime } from '${wxRelativePath}';` + '\n'}${html}`;
     }
     file.contents = new Buffer(html);
     this.push(file);

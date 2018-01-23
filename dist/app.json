@@ -1,6 +1,8 @@
 {
   "pages": [
-    "pages/index/index"
+    "pages/index/index",
+    "pages/favorites/favorites",
+    "pages/home/home"
   ],
   "window": {
     "navigationBarBackgroundColor": "#0075ff",

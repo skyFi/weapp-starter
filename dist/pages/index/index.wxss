@@ -4,8 +4,20 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.item {
+.item,
+.introduction {
   padding: 15rpx 32rpx;
   font-size: 14px;
   color: #58646E;
+}
+.more {
+  margin-bottom: 30rpx;
+  color: #0075FF;
+  text-align: center;
+  font-size: 14px;
+}
+.home {
+  font-size: 14px;
+  color: #949BA1;
+  text-align: center;
 }

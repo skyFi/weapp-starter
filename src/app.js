@@ -1,18 +1,28 @@
-import action from './actions/index';
-import { createStore } from './utils/lib/redux';
-import { Provider } from './utils/wxRedux';
+import { createStore, applyMiddleware } from './utils/lib/redux';
+import createSagaMiddleware from './utils/lib/redux-saga';
 import reducer from './reducer';
+import rootSaga from './sagas/index';
 
-const initState = {}; // 初始化的 states
-const store = createStore(reducer, initState);
+const initState = {};
+const sagaMiddleware = createSagaMiddleware({
+  emitter: emit => action => {
+   if (Array.isArray(action)) {
+     action.forEach(emit);
+     return
+   }
+   emit(action);
+  }
+});
+const store = createStore(
+  reducer, initState, applyMiddleware(sagaMiddleware)
+);
+sagaMiddleware.run(rootSaga);
 
 App(Provider(store)({
   async onLaunch() {
     const loginResult = await wx.login();
-    const res = await wx.request({
-      url: '/schools'
-    });
+    // const res = await wx.request({
+    //   url: '/schools'
+    // });
   },
-  // 挂载所有的 Actions
-  Action: action,
 }));

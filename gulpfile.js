@@ -38,7 +38,9 @@ function copyLessConfig(done) {
 // 监听任务
 function watchTaskFunc(done) {
   // 所有的事件：add, addDir, change, unlink, unlinkDir, ready, raw, error
-  gulp.watch('src/**/**').on('all', watch);
+  gulp.watch('src/**/**').on('all', watch).on('ready', () => {
+    console.log(`[${ chalk.gray(moment().format('HH:mm:ss')) }] ${  chalk.green('编译完成，请打开微信开发者工具查看调试...')  }`);
+  });
 }
 
 function watch(type, filePath) {
@@ -69,7 +71,7 @@ function watch(type, filePath) {
 
   // 复制 json, wxml 文件
   if (r.test(ext)) {
-    gulp.src([filePath, '!src/**/*/*.default.js'], { allowEmpty: true })
+    gulp.src([filePath], { allowEmpty: true })
       .pipe(changed(distDir))
       .pipe(gulp.dest(distDir))
       .on('finish', () => {
@@ -85,6 +87,7 @@ function watch(type, filePath) {
         wxPath: path.join(__dirname, './src/utils/wx.js')
       }))
       .pipe(babel())
+      .on('error', err => console.error(err.stack || err))
       .pipe(changed(distDir))
       .pipe(gulp.dest(distDir))
       .on('finish', () => {
@@ -101,8 +104,9 @@ function watch(type, filePath) {
       commomPath: path.join(__dirname, './src/app.less'),
     }))
     .pipe(less({
-      paths: [path.join(__dirname, './src/theme')]
+      paths: [path.join(__dirname, './src/theme')],
     }))
+    .on('error', err => console.error(err.stack || err))
     .pipe(rename((path) => {
       path.extname = '.wxss';
     }))
@@ -143,6 +147,7 @@ function babelJs(done) {
       wxPath: path.join(__dirname, './src/utils/wx.js')
     }))
     .pipe(babel())
+    .on('error', err => console.error(err.stack || err))
     .pipe(changed('./dist'))
     .pipe(gulp.dest('./dist'))
     .on('finish', done);
@@ -155,8 +160,9 @@ function transformLess(done) {
       themePath: path.join(__dirname, './src/theme/index.less'),
     }))
     .pipe(less({
-      paths: [path.join(__dirname, './src/theme')]
+      paths: [path.join(__dirname, './src/theme')],
     }))
+    .on('error', err => console.error(err.stack || err))
     .pipe(rename((path) => {
       path.extname = '.wxss';
     }))
@@ -171,7 +177,10 @@ function deleteDistThemeFile(done) {
 
 // 删除 输出目录
 function clean(done) {
-  del(['dist/**/*']).then(() => done());
+  del([
+    'dist/**/*', 
+    '!dist/**/*.config.json',
+  ]).then(() => done());
 }
 
 // 打印监听日志

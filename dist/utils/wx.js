@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.regeneratorRuntime = undefined;
+exports.Provider = exports.connect = exports.regeneratorRuntime = undefined;
 
 var _runtime = require('./lib/runtime');
 
@@ -80,3 +80,5 @@ promisifiedWxApi.uploadFile = _request3.default.uploadFile;
 
 exports.default = promisifiedWxApi;
 var regeneratorRuntime = exports.regeneratorRuntime = _runtime2.default;
+var connect = exports.connect = require('./wxRedux').connect;
+var Provider = exports.Provider = require('./wxRedux').Provider;
