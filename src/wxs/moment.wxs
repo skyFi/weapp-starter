@@ -27,7 +27,6 @@ function moment(fmt, date) {
     for(var i = 0; i < 7; i ++) {
       var k = okeys[i];
       var value = ovalues[i]
-      console.log(k, value);
       var otherReg = getRegExp("("+ k +")");
       if(otherReg.test(fmt)) {
         fmt = fmt.replace(otherReg, function(a, b, c){
@@ -35,6 +34,5 @@ function moment(fmt, date) {
         });   
       }
     }
-    console.log(fmt)
     return fmt;
 }
