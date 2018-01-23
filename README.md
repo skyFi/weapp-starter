@@ -23,9 +23,10 @@
   1. 使用 `Gulp` 管理自动编译，持续集成
 - [x] `wxs` 管理工具库
   1. 数据的格式化操作，如时间格式化、金币格式化等
-- [ ] 按需加载，子页面分包（除却 `tab` 页面的其他页面）
+- [x] 按需加载，子页面分包（除却 `tab` 页面的其他页面）
   1. 按功能模块分包加载（推荐）
   2. 按 `tab` 分包
+  * ps: 小程序[原生分包](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/subpackages.html)
 - [x] 资源自动化管理
   1. 上传 CDN
 
