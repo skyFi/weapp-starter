@@ -15,12 +15,24 @@ export function* pagesIndex() {
       type: 'pages/index/setname',
       name: `微信小程序开发最佳实践--${action.name}      `
     })
+
+    // yield [
+    //   put({
+    //     type: 'pages/index/setFavorites',
+    //     favorites: res
+    //   }),
+    //   put({
+    //     type: 'pages/index/setname',
+    //     name: `微信小程序开发最佳实践--${action.name}      `
+    //   })
+    // ]
   });
 };
 
 // 根 sagas，一次性全部执行
 export default function* rootSaga() {
   yield all([
-    pagesIndex()
+    pagesIndex(),
+    // ... 其他页面的 saga 在这里写
   ])
 }
