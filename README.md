@@ -29,8 +29,8 @@
   * ps: 小程序[原生分包](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/subpackages.html)
 - [x] 资源自动化管理
   1. 上传 CDN
-- [x] vscode 小程序API文档提醒
-  1. `npm run doc`
+- [x] 根据小程序API文档维护代码提示 `d.ts` 文件，推荐 vscode 编辑器开发
+  1. 执行命令 `npm run doc` 更新 `d.ts`代码提示文件，实时获取最新小程序API的代码提醒
 
 ## `Promise` 化异步接口
 
