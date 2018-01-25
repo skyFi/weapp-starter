@@ -6,6 +6,7 @@
   "repository": "https://github.com/skyFi/weapp-starter.git",
   "author": "skylor",
   "scripts": {
+    "doc": "node ./bin/doc_build.js",
     "clean": "./node_modules/gulp/bin/gulp.js clean",
     "build": "npm run clean && ./node_modules/gulp/bin/gulp.js build",
     "dev": "npm run clean && ./node_modules/gulp/bin/gulp.js dev"
@@ -15,6 +16,7 @@
     "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "chalk": "^2.3.0",
+    "cheerio": "^1.0.0-rc.2",
     "config": "^1.29.2",
     "del": "^3.0.0",
     "gulp": "^4.0.0",
@@ -28,6 +30,7 @@
     "moment": "^2.20.1",
     "progress": "^2.0.0",
     "regenerator": "^0.12.3",
+    "request": "^2.83.0",
     "through-gulp": "^0.5.0"
   }
 }

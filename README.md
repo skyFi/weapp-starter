@@ -29,6 +29,8 @@
   * ps: 小程序[原生分包](https://mp.weixin.qq.com/debug/wxadoc/dev/framework/subpackages.html)
 - [x] 资源自动化管理
   1. 上传 CDN
+- [x] vscode 小程序API文档提醒
+  1. `npm run doc`
 
 ## `Promise` 化异步接口
 
