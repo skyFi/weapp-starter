@@ -159,6 +159,7 @@ function transformLess(done) {
   gulp.src(['./src/**/*/*.less', './src/*.less'])
     .pipe(addLessImport({
       themePath: path.join(__dirname, './src/theme/index.less'),
+      commomPath: path.join(__dirname, './src/app.less'),
     }))
     .pipe(less({
       paths: [path.join(__dirname, './src/theme')],
