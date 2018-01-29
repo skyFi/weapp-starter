@@ -1,4 +1,3 @@
-const path = require('path');
 const through = require('through-gulp');
 const uploadFile = require('./bin/upload_assets');
 
@@ -11,7 +10,7 @@ function iconGeneration() {
     try {
       await uploadFile(filepath);
     } catch (error) {
-      console.error(error);
+      console.error(error); // eslint-disable-line
     }
     file.contents = new Buffer(html);
     this.push(file);

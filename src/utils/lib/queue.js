@@ -1,29 +1,28 @@
 const checkConcurrency = (concurrency = 1) => {
   if (concurrency == null) {
-    concurrency = 1
+    concurrency = 1;
+  }  else if (concurrency === 0) {
+    throw new Error('Concurrency must not be zero');
   }
-  else if (concurrency === 0) {
-    throw new Error('Concurrency must not be zero')
-  }
-  return concurrency
-}
+  return concurrency;
+};
 
 const onlyOnce = (fn) => (...args) => {
   if (fn === null) {
-    throw new Error('Callback was already called')
+    throw new Error('Callback was already called');
   }
-  const callFn = fn
-  fn = null
-  return callFn(...args)
-}
+  const callFn = fn;
+  fn = null;
+  return callFn(...args);
+};
 
 module.exports = function queue(callback, concurrency) {
-  checkConcurrency(concurrency)
+  checkConcurrency(concurrency);
 
   // 待处理的队列
-  let workers = []
+  let workers = [];
   // 正在处理的队列
-  const workerList = []
+  const workerList = [];
 
   return {
     concurrency,
@@ -31,29 +30,29 @@ module.exports = function queue(callback, concurrency) {
       workers.push({
         task,
         callback,
-      })
+      });
       setTimeout(() => {
-        this.process()
-      }, 0)
+        this.process();
+      }, 0);
     },
     process() {
       while (this.concurrency > workerList.length && workers.length) {
-        const worker = workers.shift()
-        workerList.push(worker)
+        const worker = workers.shift();
+        workerList.push(worker);
         callback(worker.task, onlyOnce((...args) => {
-          this.pull(worker)
+          this.pull(worker);
           if (typeof worker.callback === 'function') {
-            worker.callback(...args)
+            worker.callback(...args);
           }
-          this.process()
-        }))
+          this.process();
+        }));
       }
     },
     pull(worker) {
-      const index = workerList.indexOf(worker)
+      const index = workerList.indexOf(worker);
       if (index !== -1) {
-        workerList.splice(index, 1)
+        workerList.splice(index, 1);
       }
     }
-  }
-}
+  };
+};

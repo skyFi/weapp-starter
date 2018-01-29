@@ -6,11 +6,11 @@ import rootSaga from './sagas/index';
 const initState = {};
 const sagaMiddleware = createSagaMiddleware({
   emitter: emit => action => {
-   if (Array.isArray(action)) {
-     action.forEach(emit);
-     return
-   }
-   emit(action);
+    if (Array.isArray(action)) {
+      action.forEach(emit);
+      return;
+    }
+    emit(action);
   }
 });
 const store = createStore(
@@ -20,7 +20,7 @@ sagaMiddleware.run(rootSaga);
 
 App(Provider(store)({
   async onLaunch() {
-    const loginResult = await wx.login();
+    await wx.login();
     // const res = await wx.request({
     //   url: '/schools'
     // });

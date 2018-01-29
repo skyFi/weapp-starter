@@ -8,6 +8,7 @@
   "scripts": {
     "prebuild": "npm run doc",
     "doc": "node ./bin/doc_build.js",
+    "eslint": "eslint --fix .",
     "clean": "./node_modules/gulp/bin/gulp.js clean",
     "build": "npm run clean && ./node_modules/gulp/bin/gulp.js build",
     "dev": "npm run clean && ./node_modules/gulp/bin/gulp.js dev"
@@ -20,6 +21,7 @@
     "cheerio": "^1.0.0-rc.2",
     "config": "^1.29.2",
     "del": "^3.0.0",
+    "eslint": "^4.16.0",
     "gulp": "^4.0.0",
     "gulp-babel": "^7.0.0",
     "gulp-changed": "^3.2.0",

@@ -41,8 +41,7 @@ const request = function(option) {
         }
         const code = data.code;
         const msg = data.msg;
-        const err = data.err;
-        console.log('\n', `${method}: ${url}`, _data, header, '\nRES:', res, '\n');
+        console.log('\n', `${method}: ${url}`, _data, header, '\nRES:', res, '\n'); // eslint-disable-line
         if (`${code}` === '0') {
           resolve(data);
         } else {
@@ -56,7 +55,7 @@ const request = function(option) {
           }
           reject({
             errMsg: `${msg}(${code})`,
-          })
+          });
         }
       },
       fail: reject,
@@ -66,7 +65,6 @@ const request = function(option) {
 };
 
 const uploadFile = function(option) {
-  const method = option.method || 'POST';
   const url = `${config.api.default}${option.url}`;
   const _data = Object.assign({}, option.data, { timeFormat: 'YYYY-MM-DD HH:mm:ss' });
   const token = getToken();
@@ -75,7 +73,6 @@ const uploadFile = function(option) {
     'Accept': 'application/json',
     'Content-Type': 'multipart/form-data',
   }, option.header);
-  const promises = [];
   return queueRequest(this.uploadFile, 5)({
     url,
     filePath: option.filePath,
@@ -98,8 +95,7 @@ const uploadFile = function(option) {
       }
       const code = data.code;
       const msg = data.msg;
-      const err = data.err;
-      console.log('\n', `upload: ${url}`, option, '\nRES:', res, '\n');
+      console.log('\n', `upload: ${url}`, option, '\nRES:', res, '\n'); // eslint-disable-line
       if (`${code}` === '0') {
         if (option.success instanceof Function) {
           option.success(data);
@@ -126,7 +122,7 @@ const uploadFile = function(option) {
       }
     }
   }, resultTask => {
-    typeof option.callback === 'function' && option.callback(resultTask)
+    typeof option.callback === 'function' && option.callback(resultTask);
   });
 };
 

@@ -1,5 +1,5 @@
 
-export const fetchFavorites = function* () {
+export const fetchFavorites = function *() {
   return [
     '优化小程序 `API`',
     '`Promise` 化异步接口',
@@ -17,5 +17,5 @@ export const fetchFavorites = function* () {
     '按 `tab` 分包',
     '资源自动化管理',
     '上传 CDN',
-  ]
-}
+  ];
+};

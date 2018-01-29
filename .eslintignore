@@ -1,0 +1,5 @@
+dist/
+node_modules/
+assets/
+src/utils/lib/
+tmp/

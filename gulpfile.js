@@ -53,7 +53,7 @@ function watchTaskFunc(done) {
   gulp.watch(['src/**/**', 'assets/**/*'], { allowEmpty: true })
     .on('all', watch)
     .on('ready', () => {
-      console.log(`[${ chalk.gray(moment().format('HH:mm:ss')) }] ${  chalk.green('编译完成，请打开微信开发者工具查看调试...')  }`);
+      console.log(`[${chalk.gray(moment().format('HH:mm:ss'))}] ${chalk.green('编译完成，请打开微信开发者工具查看调试...')}`);
     });
 }
 
@@ -113,7 +113,7 @@ function watch(type, filePath) {
       .pipe(changed(distDir))
       .pipe(gulp.dest(distDir))
       .on('finish', () => {
-        console.log(`[${ chalk.gray(moment().format('HH:mm:ss')) }] ${  chalk.magenta('编译完成：')  }${chalk.green(distDir + '/' + name + ext)}`);
+        console.log(`[${chalk.gray(moment().format('HH:mm:ss'))}] ${chalk.magenta('编译完成：')}${chalk.green(`${distDir}/${name}${ext}`)}`);
       });
     return;
   }
@@ -136,10 +136,10 @@ function watch(type, filePath) {
     .on('finish', () => {
       if (distDir.indexOf('dist/theme') !== -1) {
         del(['dist/theme']);
-        console.log(`[${ chalk.gray(moment().format('HH:mm:ss')) }] ${  chalk.magenta('修改theme：')  }${chalk.green(distDir + '/' + name + ext)}`);
+        console.log(`[${chalk.gray(moment().format('HH:mm:ss'))}] ${chalk.magenta('修改theme：')}${chalk.green(`${distDir}/${name}${ext}`)}`);
         return;
       }
-      console.log(`[${ chalk.gray(moment().format('HH:mm:ss')) }] ${  chalk.magenta('编译完成：')  }${chalk.green(distDir + '/' + name + '.wxss')}`);
+      console.log(`[${chalk.gray(moment().format('HH:mm:ss'))}] ${chalk.magenta('编译完成：')}${chalk.green(`${distDir}/${name}.wxss`)}`);
     });
     return;
   }
@@ -202,7 +202,7 @@ function deleteDistThemeFile(done) {
 // 删除 输出目录
 function clean(done) {
   del([
-    'dist/**/*', 
+    'dist/**/*',
     '!dist/**/*.config.json',
   ]).then(() => done());
 }

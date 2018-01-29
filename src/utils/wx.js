@@ -1,6 +1,6 @@
 /* global wx*/
 import runtime from './lib/runtime';
-import promisify, { promisifyReturns } from './lib/promisify'
+import promisify, { promisifyReturns } from './lib/promisify';
 import _request from './request';
 
 const exceptProgramAPI = `closeSocket
@@ -32,12 +32,12 @@ createSelectorQuery
 getExtConfigSync
 createCameraContext
 createLivePlayerContext
-createLivePusherContext`
+createLivePusherContext`;
 
 const exceptGameAPI = `createImage
 loadFont
 setPreferredFramesPerSecond
-getFileSystemManager`
+getFileSystemManager`;
 
 const promisifiedWxApi = promisify(wx, {
   objectParams: true,
@@ -48,14 +48,14 @@ const promisifiedWxApi = promisify(wx, {
     new RegExp(exceptProgramAPI.split(/\r\n|\r|\n/).join('|'), 'gi'),
     new RegExp(exceptGameAPI.split(/\r\n|\r|\n/).join('|'), 'gi'),
   ],
-})
+});
 
 if (wx.createCameraContext) {
   promisifiedWxApi.createCameraContext = promisifyReturns(wx.createCameraContext.bind(wx), {
     takePhoto: { objectParams: true },
     startRecord: { objectParams: true },
     stopRecord: { objectParams: true },
-  })
+  });
 }
 
 if (wx.createLivePlayerContext) {
@@ -65,7 +65,7 @@ if (wx.createLivePlayerContext) {
     mute: { objectParams: true },
     requestFullScreen: { objectParams: true },
     exitFullScreen: { objectParams: true },
-  })
+  });
 }
 
 if (wx.createLivePusherContext) {
@@ -75,7 +75,7 @@ if (wx.createLivePusherContext) {
     mute: { objectParams: true },
     requestFullScreen: { objectParams: true },
     exitFullScreen: { objectParams: true },
-  })
+  });
 }
 
 if (wx.getFileSystemManager) {
@@ -92,7 +92,7 @@ if (wx.getFileSystemManager) {
     stat: { objectParams: true },
     writeFile: { objectParams: true },
     unlink: { objectParams: true },
-  })
+  });
 }
 
 // 请求
@@ -100,6 +100,6 @@ promisifiedWxApi.request = _request.request;
 promisifiedWxApi.uploadFile = _request.uploadFile;
 
 export default promisifiedWxApi;
-export const regeneratorRuntime = runtime; 
-export const connect = require('./wxRedux').connect; 
-export const Provider = require('./wxRedux').Provider; 
+export const regeneratorRuntime = runtime;
+export const connect = require('./wxRedux').connect;
+export const Provider = require('./wxRedux').Provider;
