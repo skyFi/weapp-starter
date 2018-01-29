@@ -13,7 +13,7 @@ module.exports = uploadAssets;
 
 // 如果直接执行此文件，上传资源文件夹里的所有文件
 if (require.main.filename === __filename) {
-  uploadAssets(...getFiles(assetsPath)).catch(err => {
+  uploadAssets(true).catch(err => {
     console.error(err.stack);
   });
 }
@@ -22,7 +22,9 @@ if (require.main.filename === __filename) {
  * @param {string[]} files
  */
 async function uploadAssets(...files) {
-
+  if (files && files.length > 0 && typeof files[0] === 'boolean' && files[0] === true) {
+    files = getFiles(assetsPath);
+  }
   for (const file of files) {
     const relativePath = path.relative(assetsPath, file);
     if (relativePath[0] === '.') {
@@ -33,7 +35,7 @@ async function uploadAssets(...files) {
       console.log(`文件不是图片: ${file}`);
       continue;
     }
-    const key = path.join(config.keyPrefix, relativePath);
+    const key = path.join(config.oss.keyPrefix, relativePath);
     await upload.uploadFile(key, file);
     console.log(chalk.cyan(relativePath), chalk.gray('->'), chalk.green(url.resolve(config.cdnUpload, key)));
   }

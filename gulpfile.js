@@ -12,7 +12,9 @@ const file = require('gulp-file');
 const babel = require('gulp-babel');
 const addLessImport = require('./gulp-plugin-add-less-import');
 const wxImport = require('./gulp-plugin-wx');
+const uploadCdn = require('./gulp-plugin-cdn');
 const config = require('./src/common/config');
+const uploadFile = require('./bin/upload_assets');
 
 gulp.task('copy-less-config', copyLessConfig);
 gulp.task('transform-less', transformLess);
@@ -22,9 +24,18 @@ gulp.task('copy-wx-file', copyWxFile);
 gulp.task('clean', clean);
 gulp.task('babel', babelJs);
 gulp.task('watch', watchTaskFunc);
+gulp.task('cdn', cdnTask);
 gulp.task('less', gulp.series('copy-less-config', 'transform-less', 'delete-dist-theme'));
-gulp.task('build', gulp.parallel('less', 'copy-wx-file', 'babel'));
+gulp.task('build', gulp.parallel('cdn', 'less', 'copy-wx-file', 'babel'));
 gulp.task('dev', gulp.series('build', 'watch'));
+
+// 上传静态文件(图片资源)
+function cdnTask(done) {
+  gulp.src('assets/**/*', { allowEmpty: true })
+    .pipe(uploadCdn())
+    .on('error', err => console.error(err.stack || err))
+    .on('finish', done);
+}
 
 // 拷贝 less 配置文件
 function copyLessConfig(done) {
@@ -38,13 +49,24 @@ function copyLessConfig(done) {
 // 监听任务
 function watchTaskFunc(done) {
   // 所有的事件：add, addDir, change, unlink, unlinkDir, ready, raw, error
-  gulp.watch('src/**/**').on('all', watch).on('ready', () => {
-    console.log(`[${ chalk.gray(moment().format('HH:mm:ss')) }] ${  chalk.green('编译完成，请打开微信开发者工具查看调试...')  }`);
-  });
+  // 监听
+  gulp.watch(['src/**/**', 'assets/**/*'], { allowEmpty: true })
+    .on('all', watch)
+    .on('ready', () => {
+      console.log(`[${ chalk.gray(moment().format('HH:mm:ss')) }] ${  chalk.green('编译完成，请打开微信开发者工具查看调试...')  }`);
+    });
 }
 
 function watch(type, filePath) {
   changeLog({ type, filePath });
+  const imgDirR = /^(assets)/;
+  // 静态资源(图片资源)
+  if (imgDirR.test(filePath)) {
+    if (type !== 'unlink' && type !== 'unlinkDir') {
+      uploadFile(filePath);
+    }
+    return;
+  }
   const r = /(wxml|json|wxs)$/;
   const cssR = /(less)$/;
   const jsR = /(js)$/;
