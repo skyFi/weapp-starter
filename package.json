@@ -6,6 +6,7 @@
   "repository": "https://github.com/skyFi/weapp-starter.git",
   "author": "skylor",
   "scripts": {
+    "prebuild": "npm run doc",
     "doc": "node ./bin/doc_build.js",
     "clean": "./node_modules/gulp/bin/gulp.js clean",
     "build": "npm run clean && ./node_modules/gulp/bin/gulp.js build",
