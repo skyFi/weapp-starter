@@ -120,27 +120,32 @@ function watch(type, filePath) {
 
   // 编译 less 样式文件
   if (cssR.test(ext)) {
-    gulp.src(filePath)
-    .pipe(addLessImport({
-      themePath: path.join(__dirname, './src/theme/index.less'),
-      commomPath: path.join(__dirname, './src/app.less'),
-    }))
-    .pipe(less({
-      paths: [path.join(__dirname, './src/theme')],
-    }))
-    .on('error', err => console.error(err.stack || err))
-    .pipe(rename((path) => {
-      path.extname = '.wxss';
-    }))
-    .pipe(gulp.dest(distDir))
-    .on('finish', () => {
-      if (distDir.indexOf('dist/theme') !== -1) {
-        del(['dist/theme']);
-        console.log(`[${chalk.gray(moment().format('HH:mm:ss'))}] ${chalk.magenta('修改theme：')}${chalk.green(`${distDir}/${name}${ext}`)}`);
-        return;
-      }
-      console.log(`[${chalk.gray(moment().format('HH:mm:ss'))}] ${chalk.magenta('编译完成：')}${chalk.green(`${distDir}/${name}.wxss`)}`);
-    });
+    const watchPathes = [filePath];
+    // 全局样式处理
+    if (name === 'app') {
+      watchPathes.push('src/components/**/*.less');
+    }
+    gulp.src(watchPathes)
+      .pipe(addLessImport({
+        themePath: path.join(__dirname, './src/theme/index.less'),
+        commomPath: path.join(__dirname, './src/app.less'),
+      }))
+      .pipe(less({
+        paths: [path.join(__dirname, './src/theme')],
+      }))
+      .on('error', err => console.error(err.stack || err))
+      .pipe(rename((path) => {
+        path.extname = '.wxss';
+      }))
+      .pipe(gulp.dest(distDir))
+      .on('finish', () => {
+        if (distDir.indexOf('dist/theme') !== -1) {
+          del(['dist/theme']);
+          console.log(`[${chalk.gray(moment().format('HH:mm:ss'))}] ${chalk.magenta('修改theme：')}${chalk.green(`${distDir}/${name}${ext}`)}`);
+          return;
+        }
+        console.log(`[${chalk.gray(moment().format('HH:mm:ss'))}] ${chalk.magenta('编译完成：')}${chalk.green(`${distDir}/${name}.wxss`)}`);
+      });
     return;
   }
   
