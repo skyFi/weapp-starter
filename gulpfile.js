@@ -120,12 +120,27 @@ function watch(type, filePath) {
 
   // 编译 less 样式文件
   if (cssR.test(ext)) {
-    const watchPathes = [filePath];
     // 全局样式处理
     if (name === 'app') {
-      watchPathes.push('src/components/**/*.less');
+      gulp.src('src/components/**/*.less')
+        .pipe(addLessImport({
+          themePath: path.join(__dirname, './src/theme/index.less'),
+          commomPath: path.join(__dirname, './src/app.less'),
+        }))
+        .pipe(less({
+          paths: [path.join(__dirname, './src/theme')]
+        }))
+        .on('error', err => console.error(err.stack || err))
+        .pipe(rename((path) => {
+          path.extname = '.wxss';
+        }))
+        .pipe(gulp.dest('dist/components/'))
+        .on('finish', () => {
+          console.log(`[${chalk.gray(moment().format('HH:mm:ss'))}] ${chalk.magenta('编译完成：')}${chalk.green('dist/components/**.wxss')}`);
+        });
     }
-    gulp.src(watchPathes)
+    
+    gulp.src(filePath)
       .pipe(addLessImport({
         themePath: path.join(__dirname, './src/theme/index.less'),
         commomPath: path.join(__dirname, './src/app.less'),
