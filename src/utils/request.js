@@ -83,6 +83,14 @@ const uploadFile = function(option) {
       let data = res.data;
       if (typeof data === 'string') {
         try {
+          // 处理javascript不能解析的特殊字符
+          // 下面这两行替换代码在小程序开发者工具上生效
+          // 但是，在真机上不生效，在服务器 node 环境下也能生效
+          // 所以，建议把这两行代码告知服务器开发，添加到服务器上去
+          // 防止特殊字符导致 JSON 解析失败的苦恼
+          data = data.replace(/[\u00a0\ufeff]/g, '');
+          data = data.replace(/[\u2028\u2029]/g, '\\n');
+          
           data = JSON.parse(data);
         } catch (error) {
           if (option.fail instanceof Function) {
