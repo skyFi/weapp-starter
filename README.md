@@ -38,7 +38,7 @@
 
 由于微信的API中异步接口都是有三个回调函数的，分别是`success`，`fail`，`complete`，执行时机同字面上意思（`complete`一定会在接口的最后执行）。于是 结合`Promise`，简单的描述如下：（以下为简版，具体的可以看源码）
 
-原生微信小程序API：
+原生调用微信小程序API，使用回调函数来处理业务逻辑：
 ```JavaScript
 wx.request({
   // ... 其他一些配置项
@@ -48,7 +48,7 @@ wx.request({
 });
 ```
 
-添加`Promise`后：
+添加`Promise`后，可能如下：
 ```JavaScript
 new Promise((resolve, reject) => {
   wx.request({
@@ -59,17 +59,21 @@ new Promise((resolve, reject) => {
   });
 });
 ```
-`Promise` 化后，使用起来就简单了：
+于是，在我们`Promise` 化小程序的异步接口后，就能顺畅的使用 Promise 了：
 ```JavaScript
-wx.request({ /* ...一些配置项 */}).then(res => {
-  console.log(res)
-}, err => {
-  console.error(err)
-})
+wx.request({ /* ...一些配置项 */})
+  .then(res => {
+    console.log(res)
+  }, err => {
+    console.error(err)
+  })
 ```
-结合下面的 async/await 就可以更加方便的书写同步代码
+结合下面的  `async/await` 就可以更加方便的书写同步代码
 
 ## 使用 async/await
+
+小程序自带es6转es5的功能，但可惜的是`async/await`并不是es6的，所以我们没办法直接使用。
+使用 `babel`转义后，在添加运行时代码 `regeneratorRuntime`就可以使用了，具体如下：
 
 1. 添加 `babel`:
 ```shell
@@ -102,7 +106,7 @@ const babel = require('gulp-babel');
 // ...
 ```
 
-5. 添加 `runtime`，在使用`async/await`的地方引入 `./src/utils/lib/runtime.js` 文件，幸运的是这件事情在这个repo中的`Gulp`任务中自动处理了。
+5. 添加 `runtime`，在使用`async/await`的地方引入 `./src/utils/lib/runtime.js` 文件，幸运的是这件事情在这个repo中的`Gulp`任务中自动处理了，开发者不需要关心这一步。
 
 以上，便可以在微信小程序中使用 `async/await`了。
 
@@ -110,7 +114,7 @@ const babel = require('gulp-babel');
 
 为什么选择 `less`，因为简单方便，前端编译，轻量级。
 
-注意：由于小程序本身的限制，在书写样式的时候，不要使用 `less` 的嵌套功能！
+注意：由于小程序本身的限制，在书写样式的时候，不要在组件中使用 `less` 的嵌套功能！
 
 1. 添加less 变量库等
 ```javascript
