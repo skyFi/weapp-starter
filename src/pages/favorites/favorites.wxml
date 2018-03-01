@@ -1,3 +1,50 @@
-<block wx:for="{{favorites}}" wx:for-index="index" wx:for-item="item" wx:key="index">
-  <view class="favorite-item">{{index + 1}}. {{item}}</view>
-</block>
+<view class="page">
+    <view class="page__bd sbox">
+        <form bindsubmit="formSubmit">
+        <!-- diy 模块 -->
+        <view class="block">
+            <block wx:for="{{blocks}}" wx:key="{{o}}">
+            <view class="weui-cells weui-cells_form block__item">
+                <view class="weui-cell">
+                    <view class="weui-cell__bd">
+                        <block wx:if="{{ item.type }}">
+                            <view class="block__toolbox">
+                                <view bindtap="handBlockUp" data-index="{{index}}" class="icon icon-up"></view>
+                                <view bindtap="handBlockDown" data-index="{{index}}" class="icon icon-down"></view>
+                                <view bindtap="handBlockClose" data-index="{{index}}" class="icon icon-close"></view>
+                            </view>
+                            <block wx:if="{{ item.type=='text' }}">
+                                <textarea class="u-textarea" name="field[{{item.index}}]" bindinput="bingContentInput" data-index="{{index}}" value="{{ item.value }}" placeholder="请输入..."></textarea>
+                            </block>
+                            <block wx:if="{{ item.type=='image' }}">
+                                <input type="text" name="field[{{item.index}}]" value="{{item.value}}" style="display: none;" readonly="readonly"/>
+                                <image src="{{item.value}}" class="u-image"></image>
+                            </block>
+                        </block>
+                        <block wx:else>
+                            <view class="flex padding">
+                                <view class="flex__item block__item-type" animation="{{item.fadeOutLeft}}">
+                                    <view class="block__item-type-text" bindtap="bingTypeSelect" data-type='text' data-index="{{index}}"></view>
+                                </view>
+                                <view class="flex__item" animation="{{item.fadeOutRight}}">
+                                    <view class="block__item-type-image" bindtap="bingTypeSelect" data-type='image' data-index="{{index}}"></view>
+                                </view>
+                            </view>
+                        </block>
+                    </view>
+                </view>
+                <view class="weui-cell block__sidebar padding"  bindtap="handPlus" >
+                    <view class="weui-cell__bd">
+                        <view class="icon icon-plus"data-order="{{index+1}}"></view>
+                    </view>
+                </view>
+            </view>
+            </block>
+        </view>
+
+        <view class="block__btns">
+            <button formType="submit" class="btn btn-primary btn-blank" disabled="{{submitDisabled}}">提交</button>
+        </view>
+        </form>
+    </view>
+</view>
