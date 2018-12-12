@@ -1,4 +1,6 @@
 # weapp-starter
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FskyFi%2Fweapp-starter.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FskyFi%2Fweapp-starter?ref=badge_shield)
+
 
 微信小程序开发最佳实践
 
@@ -166,3 +168,7 @@ page {
 
 QQ群：225068889
 
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FskyFi%2Fweapp-starter.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FskyFi%2Fweapp-starter?ref=badge_large)
